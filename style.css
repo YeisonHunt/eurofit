@@ -1,0 +1,103 @@
+/*ul li .white{color: #fff;}
+.inpSearch{ border: 5px solid #eee; border-radius: 5px; }
+.icon-lg{font-size: 19px;}
+.red {color: red;}
+.blue{color: blue;}*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.bigText {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #5850EB;
+}
+
+canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+body{
+    background: #202942;
+    font-family: 'Lato', sans-serif;
+}
+.container{
+    width: 1200px;
+    background: white;
+    margin: 10px auto;
+}
+.superior{
+    background: #001bb6;
+    overflow:  hidden;
+    border-radius: 1em;
+}
+.logo{
+    float: left;
+    padding: 20px;
+}
+.titulo{
+    float: right;
+    color: white;
+    font-size: 35px;
+    /*font: 200% sans-serif;*/
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 50px;
+}
+.menu-navegador{
+    margin: 10px auto;
+    background-color: #001bb6;
+    border-radius: 1em;
+}
+
+.opciones li{
+    float: right;
+    list-style: none;
+    
+}
+.opciones li a{
+    color: rgb(179, 0, 0);
+    padding: 5px;
+    /*text-decoration: none;*/
+    float: left;
+}
+/*Infomacion del deportista*/
+.inf-deportista{
+    background-color: #001bb6;
+    border-radius: 1em;
+}
+.info{
+    height: 100%;
+    width: 60%;
+    float: left;
+}
+.test-btn{
+    height: 100%;
+    width: 40%;
+    float: right;
+}
+
+.test-eurofit{
+    list-style: none;
+}
+
+.test-eurofit a{
+    padding: 5px;
+    margin: 5px auto;
+    
+}
+/*Informacion de los Test*/
+
+.test{
+    height: 100%;
+    width: 100%;
+    float: center;
+
+}
+.navette{
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+}
