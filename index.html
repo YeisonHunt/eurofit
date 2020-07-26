@@ -195,7 +195,7 @@
 			<div class="col-md-6 col-sm-12">
 				<div class="test-btn">
                     <ul class="test-eurofit">
-                        <li><a href="#myChart" class="btn btn-success" onclick="onClickCourseNavette()">Course
+                        <li><a href="#myChart" class="btn btn-success" >Course
                                 Navette</a></li>
                         <li><a href="#speedChart" class="btn btn-success" >Vel. 5x10 mts</a></li>
                         <li><a href="" class="btn btn-success" >Flexión de Tronco</a></li>
@@ -230,9 +230,30 @@
                   <br>
             </div> -->
 
+            
+            <div class="col-12 text-center">
+                <h4>Datos Course Navette</h4>
+            </div>
+
+            <div class="col-12">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                       
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Distancia</th>
+                            <th>N° Rectas</th>
+                            <th>Tiempo Final</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableCourseNavette"></tbody>
+                </table>
+            </div>
+
             <div class="col-12 text-center">
                 <h4>Gráfica Course Navette</h4>
             </div>
+
             <div class="col-12"> <!--Course Navette -->
                 <div style="width:100%;">
                     <canvas id="myChart"></canvas>
@@ -241,6 +262,24 @@
 
             <br>
             <br>
+
+            <div class="col-12 text-center">
+                <h4>Datos Vel 5 x 10 mts</h4>
+            </div>
+
+            <div class="col-12">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                       
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Distancia</th>
+                            <th>Tiempo Final</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableSpeedC"></tbody>
+                </table>
+            </div>
             <div class="col-12 text-center">
                 <h4>Gráfica Vel 5x10 mts</h4>
             </div>

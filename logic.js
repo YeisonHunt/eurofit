@@ -1,7 +1,7 @@
 var db = firebase.database();
 
 var update = document.getElementById('update');
-update.disabled = false;
+update.disabled = true;
 
 
 const rootRef = db.ref('Users');
@@ -21,26 +21,29 @@ function getDataCourseByUserId(userId){
 
 
     // Arrays para Course Navette
-    var infoArray = []
+    var tableNavette = []
     var distances = [0]
     var times = ['0:00']
+    var keys = []
 
     
 
-    for (const key in courseNavette.testcoursenavette) {
+    for (var key in courseNavette.testcoursenavette) {
         if (courseNavette.testcoursenavette.hasOwnProperty(key)) {
             const element = courseNavette.testcoursenavette[key];
 
             if(element.distance && element.finaltime && element.straight){
                 var toAdd = {
+                    key:key,
                     distance: element.distance,
                     finaltime: element.finaltime,
                     straight:  element.straight
                 }
 
-                infoArray.push(toAdd)
+                tableNavette.push(toAdd)
                 distances.push(element.distance)
                 times.push(element.finaltime)
+                keys.push(key)
 
             }
             
@@ -50,15 +53,27 @@ function getDataCourseByUserId(userId){
     // Arrays para Vel510
     var speedTimes = ['0:00']
     var speedDistances = [0]
+    var speedKeys = []
+    var tableSpeed = []
 
-    for (const key in courseNavette.testspeed) {
+    for (var key in courseNavette.testspeed) {
         if (courseNavette.testspeed.hasOwnProperty(key)) {
             var element = courseNavette.testspeed[key];
 
             if(element.distance && element.finaltime){
 
+                var toAdd = {
+                    key:key,
+                    distance: element.distance,
+                    finaltime: element.finaltime
+ 
+                }
+
+                tableSpeed.push(toAdd)
+
                 speedDistances.push(element.distance)
                 speedTimes.push(element.finaltime)
+                speedKeys.push(key)
 
             }
             
@@ -71,7 +86,10 @@ function getDataCourseByUserId(userId){
     console.log(times);
 
     graficarCourseNavette(distances,times)
+    funTableNavette(tableNavette)
     graficarvel510(speedDistances,speedTimes)
+    funTableSpeed(tableSpeed)
+    
 
 
     });
@@ -157,33 +175,53 @@ function dateActuality() {
 }
 
 /*Mostrar datos Course Navette*/
-function onClickCourseNavette() {
-    var key = value("key");
 
-    var reference = db.ref('Users/' + key + '/testcoursenavette');
-    reference.on('value', function (course) {
-        var datacourse = course.val();
-        $.each(datacourse, function (nodo, value) {
-            var sendData = tablecourse(nodo, value.distance, value.straight, value.finaltime);
-            printHTML('loadcoursenavette', sendData);
-        });
+function funTableNavette(info) {
+
+    var tableString = ''
+
+    info.forEach(element => {
+        
+        tableString += 
+        '<tr>' +
+        '<td>' + element.key + '</td>' +
+        '<td>' + element.distance + ' ' + 'mts' + '</td>' +
+        '<td>' + element.straight + '</td>' +
+        '<td>' + element.finaltime + ' ' + 'mm:ss' + '</td>'+
+        '</tr>';
     });
 
-    function tablecourse(key, distance, straight, finaltime) {
+   
+    
 
-        //distance = distance.replace(/[undefined]/, '');
+    inHTML('tableCourseNavette', tableString);
 
-        return (
-            '<tr>' +
-            '<td>' + key + '</td>' +
-            '<td id="distance">' + distance + ' ' + 'mts' + '</td>' +
-            '<td>' + straight + '</td>' +
-            '<td id="finaltime">' + finaltime + ' ' + 'mm:ss' + '</td>'
-        );
-    }
     update.disabled = false;
 
 }
+
+function funTableSpeed(info){
+
+    var tableString = ''
+
+    info.forEach(element => {
+        
+        tableString += 
+        '<tr>' +
+        '<td>' + element.key + '</td>' +
+        '<td>' + element.distance + ' ' + 'mts' + '</td>' +
+        '<td>' + element.finaltime + ' ' + 'mm:ss' + '</td>'+
+        '</tr>';
+    });
+
+   
+    
+
+    inHTML('tableSpeedC', tableString);
+
+    update.disabled = false;
+}
+
 
 
 
@@ -214,34 +252,6 @@ function onClickSpeed() {
         );
     }
 
-}
-
-/*Grafica velocidad 5x10 */
-function onClickGraphSpeed() {
-    //var distance = value("distance");
-    //var finaltime = value("finaltime");
-    new Morris.Line({
-        // ID of the element in which to draw the chart.
-        element: 'GraphSpeed',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [
-            { Test: '1', Time: 67 },
-            { Test: '2', Time: 80 },
-            { Test: '3', Time: 92 },
-            { Test: '4', Time: 105 },
-            { Test: '5', Time: 65 }
-        ],
-        // The name of the data record attribute that contains x-values.
-        xkey: 'Test',
-        // A list of names of data record attributes that contain y-values.
-        ykeys: ['Time'],
-        // Labels for the ykeys -- will be displayed when you hover over the
-        // chart.
-        labels: ['Vel. 5x10'],
-        resize: true,
-        lineColors: ['#C14D9F']
-    });
 }
 
 
@@ -297,6 +307,7 @@ function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Wai
 
     setData(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Waist, ICC, IMC);
     getDataCourseByUserId(key);
+  
 
     var response = '<div class="aawp">' +
         '<input type="hidden" value=' + key + ' id="key">' +
