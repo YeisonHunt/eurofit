@@ -313,7 +313,7 @@ function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Wai
         '</ul>'+
         '</div>';
 
-    response = '';
+    
 
     inHTML('editData', response);
     update.disabled = false;
