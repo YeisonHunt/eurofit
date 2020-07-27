@@ -301,6 +301,41 @@ function clearData(){
     document.getElementById('idDocument').innerHTML = "?"
 }
 
+function showNavette(){
+    document.getElementById("graficasRow").style.display = "block";
+    document.getElementById("idNavette1").style.display = "block";
+    document.getElementById("idNavette2").style.display = "block";
+    document.getElementById("idNavetteGrafica1").style.display = "block";
+    document.getElementById("idNavetteGrafica2").style.display = "block";
+
+    hideSpeed()
+}
+
+function hideNavette(){
+    
+    document.getElementById("idNavette1").style.display = "none";
+    document.getElementById("idNavette2").style.display = "none";
+    document.getElementById("idNavetteGrafica1").style.display = "none";
+    document.getElementById("idNavetteGrafica2").style.display = "none";
+}
+
+function showSpeed(){
+    document.getElementById("graficasRow").style.display = "block";
+    document.getElementById("idSpeed1").style.display = "block";
+    document.getElementById("idSpeed2").style.display = "block";
+    document.getElementById("idSpeedGrafica1").style.display = "block";
+    document.getElementById("idSpeedGrafica2").style.display = "block";
+    hideNavette()
+}
+
+function hideSpeed(){
+    
+    document.getElementById("idSpeed1").style.display = "none";
+    document.getElementById("idSpeed2").style.display = "none";
+    document.getElementById("idSpeedGrafica1").style.display = "none";
+    document.getElementById("idSpeedGrafica2").style.display = "none";
+}
+
 /*button mostart datos del deportista*/
 function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Waist, ICC, IMC) {
     
@@ -311,7 +346,7 @@ function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Wai
 
     var response = '<div class="aawp">' +
         '<input type="hidden" value=' + key + ' id="key">' +
-        '<h5>Idenfiticación: ' + key + '</h5>' +
+        '<h5>Idenfiticaci?n: ' + key + '</h5>' +
         '<h5>Nombre: ' + Name + '&nbsp;' + Lastname + '</h5>' +
         '<h5>Edad: ' + Age + '</h5>' +
         '<h5>Genero: ' + Gender + '</h5>' +
@@ -324,11 +359,15 @@ function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Wai
         '</ul>'+
         '</div>';
 
+
     
 
-    inHTML('editData', response);
+    //
+
     update.disabled = false;
 }
+
+document.getElementById("graficasRow").style.display = 'none';
 
 /*Cargar datos de firebase*/
 var reference = db.ref('Users/');

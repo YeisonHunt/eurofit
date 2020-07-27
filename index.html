@@ -183,35 +183,30 @@
 		
 		<div class="row"> <!-- Information Table -->
 			<div class="col-12 text-center ">
-				<h5 class="rounded" style="background-color: #202942; color:white; padding: 10px;">Información del deportista</h5>
+				<h5 class="rounded" style="background-color: #202942; color:white; padding: 10px;">Pruebas</h5>
 			</div>
 
-			<div class="col-md-6 col-sm-12">
-				<div id="editData">
 
-				</div>
-			</div>
+			<div class="col-12 text-center">
 
-			<div class="col-md-6 col-sm-12">
-				<div class="test-btn">
-                    <ul class="test-eurofit">
-                        <li><a href="#myChart" class="btn btn-success" >Course
-                                Navette</a></li>
-                        <li><a href="#speedChart" class="btn btn-success" >Vel. 5x10 mts</a></li>
-                        <li><a href="" class="btn btn-success" >Flexión de Tronco</a></li>
-                        <li><a href="" class="btn btn-success" >Salto Horizontal</a></li>
-                        <li><a href="" class="btn btn-success" >Flexión de Brazos</a></li>
-                        <li><a href="" class="btn btn-success" >Flexión de Brazos</a></li>
-                        <li><a href="" class="btn btn-success" >Abdominales 30 seg</a></li>
-                    </ul>
-                </div>
+                <button  class="btn btn-success" onclick="showNavette()" >Course Navette</button>
+                <button  class="btn btn-success" onclick="showSpeed()" >Vel. 5x10 mts</button>
+                <button  class="btn btn-success" >Flexión de Tronco</button>
+                <button  class="btn btn-success" >Salto Horizontal</button>
+                <button  class="btn btn-success" >Flexión de Brazos</button>
+                <button  class="btn btn-success" >Flexión de Brazos</button>                
+                <button  class="btn btn-success" >Abdominales 30 seg</button>
+                    
+            <br>
+            <br>
+               
 			</div>
 
 			
 
 		</div>
 
-        <div class="row"><!-- Graficas -->
+        <div class="row" id="graficasRow" ><!-- Graficas -->
 <!-- 
                 <div class="col-12 text-center">
                     <h5>Selecciona una gráfica</h5>
@@ -231,14 +226,13 @@
             </div> -->
 
             
-            <div class="col-12 text-center">
+            <div class="col-12 text-center" id="idNavette1">
                 <h4>Datos Course Navette</h4>
             </div>
 
-            <div class="col-12">
+            <div class="col-12" id="idNavette2">
                 <table class="table table-sm table-bordered text-center">
-                    <thead>
-                       
+                    <thead>  
                         <tr>
                             <th>Prueba</th>
                             <th>Distancia</th>
@@ -250,11 +244,11 @@
                 </table>
             </div>
 
-            <div class="col-12 text-center">
+            <div class="col-12 text-center" id="idNavetteGrafica1">
                 <h4>Gráfica Course Navette</h4>
             </div>
 
-            <div class="col-12"> <!--Course Navette -->
+            <div class="col-12" id="idNavetteGrafica2"> <!--Course Navette -->
                 <div style="width:100%;">
                     <canvas id="myChart"></canvas>
                 </div>
@@ -263,11 +257,11 @@
             <br>
             <br>
 
-            <div class="col-12 text-center">
+            <div class="col-12 text-center" id="idSpeed1">
                 <h4>Datos Vel 5 x 10 mts</h4>
             </div>
 
-            <div class="col-12">
+            <div class="col-12" id="idSpeed2">
                 <table class="table table-sm table-bordered text-center">
                     <thead>
                        
@@ -280,10 +274,10 @@
                     <tbody id="tableSpeedC"></tbody>
                 </table>
             </div>
-            <div class="col-12 text-center">
+            <div class="col-12 text-center" id="idSpeedGrafica1">
                 <h4>Gráfica Vel 5x10 mts</h4>
             </div>
-            <div class="col-12"> <!--Course Navette -->
+            <div class="col-12" id="idSpeedGrafica2"> <!--Course Navette -->
                 <div style="width:100%;">
                     <canvas id="speedChart"></canvas>
                 </div>
