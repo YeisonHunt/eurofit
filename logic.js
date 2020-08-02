@@ -133,6 +133,8 @@ function getDataCourseByUserId(userId) {
             }
         }
 
+        console.log(tableSalto)
+
 
         var flexionBrazoDistances = []
         var flexionBrazoKeys = []
@@ -697,7 +699,7 @@ function funTableBrazo(info) {
 
 
 
-    inHTML('tableSalto', tableString);
+    inHTML('tableBrazo', tableString);
 
     update.disabled = false;
 
