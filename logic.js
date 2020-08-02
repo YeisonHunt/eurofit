@@ -22,8 +22,8 @@ function getDataCourseByUserId(userId){
 
     // Arrays para Course Navette
     var tableNavette = []
-    var distances = [0]
-    var times = ['0:00']
+    var distances = []
+    var times = []
     var keys = []
 
     
@@ -41,8 +41,8 @@ function getDataCourseByUserId(userId){
                 }
 
                 tableNavette.push(toAdd)
-                distances.push(element.distance)
-                times.push(element.finaltime)
+                distances.push(parseInt((element.distance).replace('.','').replace(':','').replace('mts','')))
+                times.push(parseInt((element.finaltime).replace('.','').replace(':','')))
                 keys.push(key)
 
             }
@@ -82,10 +82,7 @@ function getDataCourseByUserId(userId){
 
 
 
-    console.log(distances);
-    console.log(times);
-
-    graficarCourseNavette(distances,times)
+    graficarCourseNavette(distances,times,keys)
     funTableNavette(tableNavette)
     graficarvel510(speedDistances,speedTimes)
     funTableSpeed(tableSpeed)
@@ -125,7 +122,7 @@ function graficarvel510(distances,times){
     });
 }
 
-function graficarCourseNavette(distances,times){
+function graficarCourseNavette(distances,times,keys){
     
     var ctx = document.getElementById('myChart').getContext('2d');
 
@@ -134,24 +131,73 @@ function graficarCourseNavette(distances,times){
     var datasetCourvette = {}
     var graphTitle = ''
 
+    var chartData = {
+        labels: keys,
+        datasets: [{
+            label: 'Prueba (mss)',
+            backgroundColor: 'rgb(99, 179, 237)',
+            borderColor: 'rgb(43, 108, 176)',
+            yAxisID: 'y-axis-1',
+            data: times
+        }, {
+            label: 'Distancia (mts)',
+            backgroundColor: 'rgb(255, 255, 255,0.1)',
+            borderColor: 'rgb(255, 255, 255, 0.1)',
+            yAxisID: 'y-axis-2',
+            data: distances
+        }]
+
+    };
+
+    
+
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
     
         // The data for our dataset
-        data: {
-            labels: times,
-            datasets: [{
-                fill:false,
-                label: 'Course Navette',
-                backgroundColor: 'rgb(99, 179, 237)',
-                borderColor: 'rgb(43, 108, 176)',
-                data: distances
-            }]
-        },
-    
+        data: chartData,    
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                
+            },
+            scales: {
+                yAxes: [{
+                    label:'Tiempo final',
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    id: 'y-axis-1',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Tiempo (mss)'
+                    },
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    id: 'y-axis-2',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Distancia (mts)'
+                    },
+                    gridLines: {
+                        drawOnChartArea: false
+                    }
+                }],
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Pruebas'
+                    }
+                }],
+            }
+        }
+
         // Configuration options go here
-        options: {}
+        
     });
 }
 
@@ -335,6 +381,8 @@ function hideSpeed(){
     document.getElementById("idSpeedGrafica1").style.display = "none";
     document.getElementById("idSpeedGrafica2").style.display = "none";
 }
+
+
 
 /*button mostart datos del deportista*/
 function viewDataUser(key, Name, Lastname, Age, Gender, Height, Weight, Hip, Waist, ICC, IMC) {
