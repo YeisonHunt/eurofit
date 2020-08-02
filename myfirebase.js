@@ -1,3 +1,6 @@
+
+// Este firesbase debe ser reemplazado por el del dueno de la app
+
 var firebaseConfig = {
     apiKey: "AIzaSyDNb3DY67xUOAAHI64n_tl0woGRPASLIhU",
     authDomain: "test-project-1-ede8d.firebaseapp.com",
