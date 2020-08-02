@@ -187,6 +187,33 @@ function getDataCourseByUserId(userId) {
             }
         }
 
+        var abdominalesDistances = []
+        var abdominalesKeys = []
+        var abdominalesTable = []
+
+        for (var key in courseNavette.testabdominales) {
+            if (courseNavette.testabdominales.hasOwnProperty(key)) {
+                var element = courseNavette.testabdominales[key];
+
+                if (element.repetitions) {
+
+                    var toAdd = {
+                        key: key,
+                        repetitions: element.repetitions
+       
+                    }
+    
+                    abdominalesTable.push(toAdd)
+
+                    abdominalesDistances.push(parseInt((element.repetitions).replace(':', '').replace('mts', '')))
+                    abdominalesKeys.push(key)
+
+                }
+
+            }
+        }
+
+
 
 
 
@@ -203,9 +230,51 @@ function getDataCourseByUserId(userId) {
         funTableBrazo(tableFlexionBrazo)
         graficarTapping(tappingDistances, tappingKeys)
         funTableTapping(tappingTable)
+        graficarAbdominales(abdominalesDistances, abdominalesKeys)
+        funTableAbdominales(abdominalesTable)
         
 
 
+    });
+}
+
+function graficarAbdominales(distances,keys){
+
+    var ctx = document.getElementById('idAbdominales').getContext('2d')
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: keys,
+            datasets: [{
+                label:'Pruebas',
+                data: distances,
+                backgroundColor: 'rgb(99, 179, 237)',
+                borderColor: 'rgb(43, 108, 176)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Pruebas'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display:true,
+                        labelString:'Repeticiones'
+                    }
+                }
+                    
+                ]
+            }
+        }
     });
 }
 
@@ -568,6 +637,28 @@ function dateActuality() {
     return fh.getFullYear() + "-" + (fh.getMonth() + 1) + "-" + fh.getDate() + " " + fh.getHours() + ":" + fh.getMinutes();
 }
 
+function funTableAbdominales(info) {
+
+    var tableString = ''
+
+    info.forEach(element => {
+
+        tableString +=
+            '<tr>' +
+            '<td>' + element.key + '</td>' +
+            '<td>' + element.repetitions + '</td>' +
+            '</tr>';
+    });
+
+
+
+
+    inHTML('tableAbdominales', tableString);
+
+    update.disabled = false;
+
+}
+
 function funTableTapping(info) {
 
     var tableString = ''
@@ -796,6 +887,7 @@ function showNavette() {
     hideSaltoHorizontal()
     hideFlexionBrazo()
     hideTapping()
+    hideAbdominales()
 }
 
 function hideNavette() {
@@ -818,6 +910,7 @@ function showSpeed() {
     hideSaltoHorizontal()
     hideFlexionBrazo()
     hideTapping()
+    hideAbdominales()
 }
 
 function hideSpeed() {
@@ -841,6 +934,7 @@ function showFlexionTronco() {
     hideSaltoHorizontal()
     hideFlexionBrazo()
     hideTapping()
+    hideAbdominales()
 }
 
 function hideFlexionTronco() {
@@ -864,6 +958,7 @@ function showSaltoHorizontal() {
     hideFlexionTronco()
     hideFlexionBrazo()
     hideTapping()
+    hideAbdominales()
 }
 
 function hideSaltoHorizontal() {
@@ -887,6 +982,7 @@ function showFlexionBrazo() {
     hideFlexionTronco()
     hideSaltoHorizontal()
     hideTapping()
+    hideAbdominales()
 }
 
 function hideFlexionBrazo() {
@@ -910,6 +1006,7 @@ function showTapping() {
     hideFlexionTronco()
     hideSaltoHorizontal()
     hideFlexionBrazo()
+    hideAbdominales()
 }
 
 function hideTapping() {
@@ -919,6 +1016,32 @@ function hideTapping() {
     document.getElementById("idTappingGrafica1").style.display = "none";
     document.getElementById("idTappingGrafica2").style.display = "none";
 }
+
+function showAbdominales() {
+
+    document.getElementById("graficasRow").style.display = "block";
+    document.getElementById("idAbdominales1").style.display = "block";
+    document.getElementById("idAbdominales2").style.display = "block";
+    document.getElementById("idAbdominalesGrafica1").style.display = "block";
+    document.getElementById("idAbdominalesGrafica2").style.display = "block";
+
+    hideNavette()
+    hideSpeed()
+    hideFlexionTronco()
+    hideSaltoHorizontal()
+    hideFlexionBrazo()
+    hideTapping()
+}
+
+function hideAbdominales() {
+
+    document.getElementById("idAbdominales1").style.display = "none";
+    document.getElementById("idAbdominales2").style.display = "none";
+    document.getElementById("idAbdominalesGrafica1").style.display = "none";
+    document.getElementById("idAbdominalesGrafica2").style.display = "none";
+}
+
+
 
 
 
