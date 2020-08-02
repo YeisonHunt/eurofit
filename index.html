@@ -192,10 +192,10 @@
 
                 <button  class="btn btn-success" onclick="showNavette()" >Course Navette</button>
                 <button  class="btn btn-success" onclick="showSpeed()" >Vel. 5x10 mts</button>
-                <button  class="btn btn-success" >Flexión de Tronco</button>
-                <button  class="btn btn-success" >Salto Horizontal</button>
-                <button  class="btn btn-success" >Flexión de Brazos</button>
-                <button  class="btn btn-success" >Flexión de Brazos</button>                
+                <button  class="btn btn-success" onclick="showFlexionTronco()" >Flexión de Tronco</button>
+                <button  class="btn btn-success" onclick="showSaltoHorizontal()" >Salto Horizontal</button>
+                <button  class="btn btn-success" onclick="showFlexionBrazo()" >Flexión de Brazos</button>
+                <button  class="btn btn-success" onclick="showTapping()" >Tapping</button>                
                 <button  class="btn btn-success" >Abdominales 30 seg</button>
                     
             <br>
@@ -278,11 +278,158 @@
             <div class="col-12 text-center" id="idSpeedGrafica1">
                 <h4>Gráfica Vel 5x10 mts</h4>
             </div>
-            <div class="col-12" id="idSpeedGrafica2"> <!--Course Navette -->
+            <div class="col-12" id="idSpeedGrafica2"> 
                 <div style="width:100%;">
                     <canvas id="speedChart"></canvas>
                 </div>
             </div>
+
+            <br>
+            <br>
+
+            <!-- Grafica flexion de tronco -->
+
+            <div class="col-12 text-center" id="idTronco1">
+                <h4>Flexión de Tronco</h4>
+            </div>
+
+            <div class="col-12" id="idTronco2">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                       
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Distancia</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableTronco"></tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center" id="idTroncoGrafica1">
+                <h4>Gráfica Flexión Tronco</h4>
+            </div>
+            <div class="col-12" id="idTroncoGrafica2"> 
+                <div style="width:100%;">
+                    <canvas id="idTronco"></canvas>
+                </div>
+            </div>
+
+            <!-- Fin Grafica flexion de tronco -->
+
+              <!-- Grafica de salto horizontal -->
+
+              <div class="col-12 text-center" id="idSalto1">
+                <h4>Salto Horizontal</h4>
+            </div>
+
+            <div class="col-12" id="idSalto2">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                       
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Distancia 01</th>
+                            <th>Distancia 02</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableSalto"></tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center" id="idSaltoGrafica1">
+                <h4>Gráfica Salto Horizontal</h4>
+            </div>
+            <div class="col-12" id="idSaltoGrafica2"> 
+                <div style="width:100%;">
+                    <canvas id="idSalto"></canvas>
+                </div>
+            </div>
+
+            <!-- Fin Grafica de salto horizontal -->
+
+              <!-- Grafica de flexion brazos -->
+
+            <div class="col-12 text-center" id="idBrazo1">
+                <h4>Flexión Brazos</h4>
+            </div>
+
+            <div class="col-12" id="idBrazo2">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                       
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Tiempo Final</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBrazo"></tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center" id="idBrazoGrafica1">
+                <h4>Gráfica Flexión Brazos</h4>
+            </div>
+            <div class="col-12" id="idBrazoGrafica2"> 
+                <div style="width:100%;">
+                    <canvas id="idBrazo"></canvas>
+                </div>
+            </div>
+
+            <!-- Fin Grafica de flexion brazos-->
+
+            <!-- Grafica de tapping -->
+
+            <div class="col-12 text-center" id="idTapping1">
+                <h4>Tapping</h4>
+            </div>
+
+            <div class="col-12" id="idTapping2">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Tiempo Final</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableTapping"></tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center" id="idTappingGrafica1">
+                <h4>Gráfica Tapping</h4>
+            </div>
+            <div class="col-12" id="idTappingGrafica2"> 
+                <div style="width:100%;">
+                    <canvas id="idTapping"></canvas>
+                </div>
+            </div>
+
+            <!-- Fin Grafica Tapping -->
+
+            <!-- Grafica de tapping -->
+
+            <div class="col-12 text-center" id="idAbdominales1">
+                <h4>Abdominales</h4>
+            </div>
+
+            <div class="col-12" id="idAbdominales2">
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Repeticiones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableAbdominales"></tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center" id="idAbdominalesGrafica1">
+                <h4>Gráfica Abdominales</h4>
+            </div>
+            <div class="col-12" id="idAbdominalesGrafica2"> 
+                <div style="width:100%;">
+                    <canvas id="idAbdominales"></canvas>
+                </div>
+            </div>
+
+            <!-- Fin Grafica Tapping -->
 
 
         </div>
