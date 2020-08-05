@@ -483,7 +483,7 @@ function graficarFlexionTronco(distances,keys){
         },
         options: {
             scales: {
-                yAxes: [{
+                xAxes: [{
                     ticks: {
                         beginAtZero: true
                     },
