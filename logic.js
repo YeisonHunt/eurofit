@@ -240,6 +240,38 @@ function getDataCourseByUserId(userId) {
     });
 }
 
+function exportTableToExcel(tableID, filename = ''){
+
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+
 function graficarAbdominales(distances,keys){
 
     var ctx = document.getElementById('idAbdominales').getContext('2d')
@@ -883,6 +915,7 @@ function showNavette() {
     document.getElementById("idNavette2").style.display = "block";
     document.getElementById("idNavetteGrafica1").style.display = "block";
     document.getElementById("idNavetteGrafica2").style.display = "block";
+    document.getElementById("btnTableCourseNavetteExcel").style.display = "block";
 
     hideSpeed()
     hideFlexionTronco()
@@ -898,6 +931,9 @@ function hideNavette() {
     document.getElementById("idNavette2").style.display = "none";
     document.getElementById("idNavetteGrafica1").style.display = "none";
     document.getElementById("idNavetteGrafica2").style.display = "none";
+    document.getElementById("btnTableCourseNavetteExcel").style.display = "none";
+
+
 }
 
 function showSpeed() {
@@ -906,6 +942,8 @@ function showSpeed() {
     document.getElementById("idSpeed2").style.display = "block";
     document.getElementById("idSpeedGrafica1").style.display = "block";
     document.getElementById("idSpeedGrafica2").style.display = "block";
+    document.getElementById("btnTableSpeedCExcel").style.display = "none";
+
 
     hideNavette()
     hideFlexionTronco()
@@ -921,6 +959,8 @@ function hideSpeed() {
     document.getElementById("idSpeed2").style.display = "none";
     document.getElementById("idSpeedGrafica1").style.display = "none";
     document.getElementById("idSpeedGrafica2").style.display = "none";
+    document.getElementById("btnTableSpeedCExcel").style.display = "none";
+
 }
 
 function showFlexionTronco() {
@@ -930,6 +970,8 @@ function showFlexionTronco() {
     document.getElementById("idTronco2").style.display = "block";
     document.getElementById("idTroncoGrafica1").style.display = "block";
     document.getElementById("idTroncoGrafica2").style.display = "block";
+    document.getElementById("btnTableTroncoExcel").style.display = "block";
+
 
     hideNavette()
     hideSpeed()
@@ -945,6 +987,7 @@ function hideFlexionTronco() {
     document.getElementById("idTronco2").style.display = "none";
     document.getElementById("idTroncoGrafica1").style.display = "none";
     document.getElementById("idTroncoGrafica2").style.display = "none";
+    document.getElementById("btnTableTroncoExcel").style.display = "none";
 }
 
 function showSaltoHorizontal() {
@@ -954,6 +997,7 @@ function showSaltoHorizontal() {
     document.getElementById("idSalto2").style.display = "block";
     document.getElementById("idSaltoGrafica1").style.display = "block";
     document.getElementById("idSaltoGrafica2").style.display = "block";
+    document.getElementById("btnTableSaltoExcel").style.display = "block";
 
     hideNavette()
     hideSpeed()
@@ -969,6 +1013,7 @@ function hideSaltoHorizontal() {
     document.getElementById("idSalto2").style.display = "none";
     document.getElementById("idSaltoGrafica1").style.display = "none";
     document.getElementById("idSaltoGrafica2").style.display = "none";
+    document.getElementById("btnTableSaltoExcel").style.display = "none";
 }
 
 function showFlexionBrazo() {
@@ -978,6 +1023,7 @@ function showFlexionBrazo() {
     document.getElementById("idBrazo2").style.display = "block";
     document.getElementById("idBrazoGrafica1").style.display = "block";
     document.getElementById("idBrazoGrafica2").style.display = "block";
+    document.getElementById("btnTableBrazoExcel").style.display = "block";
 
     hideNavette()
     hideSpeed()
@@ -993,6 +1039,7 @@ function hideFlexionBrazo() {
     document.getElementById("idBrazo2").style.display = "none";
     document.getElementById("idBrazoGrafica1").style.display = "none";
     document.getElementById("idBrazoGrafica2").style.display = "none";
+    document.getElementById("btnTableBrazoExcel").style.display = "none";
 }
 
 function showTapping() {
@@ -1002,6 +1049,7 @@ function showTapping() {
     document.getElementById("idTapping2").style.display = "block";
     document.getElementById("idTappingGrafica1").style.display = "block";
     document.getElementById("idTappingGrafica2").style.display = "block";
+    document.getElementById("btnTableTappingExcel").style.display = "block";
 
     hideNavette()
     hideSpeed()
@@ -1017,6 +1065,7 @@ function hideTapping() {
     document.getElementById("idTapping2").style.display = "none";
     document.getElementById("idTappingGrafica1").style.display = "none";
     document.getElementById("idTappingGrafica2").style.display = "none";
+    document.getElementById("btnTableTappingExcel").style.display = "none";
 }
 
 function showAbdominales() {
@@ -1026,6 +1075,7 @@ function showAbdominales() {
     document.getElementById("idAbdominales2").style.display = "block";
     document.getElementById("idAbdominalesGrafica1").style.display = "block";
     document.getElementById("idAbdominalesGrafica2").style.display = "block";
+    document.getElementById("btnTableAbdominalesExcel").style.display = "block";
 
     hideNavette()
     hideSpeed()
@@ -1041,6 +1091,7 @@ function hideAbdominales() {
     document.getElementById("idAbdominales2").style.display = "none";
     document.getElementById("idAbdominalesGrafica1").style.display = "none";
     document.getElementById("idAbdominalesGrafica2").style.display = "none";
+    document.getElementById("btnTableAbdominalesExcel").style.display = "none";
 }
 
 

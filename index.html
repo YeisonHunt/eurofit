@@ -232,7 +232,7 @@
             </div>
 
             <div class="col-12" id="idNavette2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableCourseNavetteExcel">
                     <thead>  
                         <tr>
                             <th>Prueba</th>
@@ -243,6 +243,10 @@
                     </thead>
                     <tbody id="tableCourseNavette"></tbody>
                 </table>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableCourseNavetteExcel" onclick="exportTableToExcel('tableCourseNavetteExcel','tableCourseNavette')" >Descargar excel</button>
             </div>
 
             <div class="col-12 text-center" id="idNavetteGrafica1">
@@ -263,7 +267,7 @@
             </div>
 
             <div class="col-12" id="idSpeed2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableSpeedCExcel">
                     <thead>
                        
                         <tr>
@@ -275,6 +279,11 @@
                     <tbody id="tableSpeedC"></tbody>
                 </table>
             </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableSpeedCExcel" onclick="exportTableToExcel('tableSpeedCExcel','tableSpeedC')" >Descargar excel</button>
+            </div>
+
             <div class="col-12 text-center" id="idSpeedGrafica1">
                 <h4>Gráfica Vel 5x10 mts</h4>
             </div>
@@ -294,7 +303,7 @@
             </div>
 
             <div class="col-12" id="idTronco2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableTroncoExcel">
                     <thead>
                        
                         <tr>
@@ -304,6 +313,10 @@
                     </thead>
                     <tbody id="tableTronco"></tbody>
                 </table>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableTroncoExcel" onclick="exportTableToExcel('tableTroncoExcel','tableTronco')" >Descargar excel</button>
             </div>
             <div class="col-12 text-center" id="idTroncoGrafica1">
                 <h4>Gráfica Flexión Tronco</h4>
@@ -323,7 +336,7 @@
             </div>
 
             <div class="col-12" id="idSalto2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableSaltoExcel">
                     <thead>
                        
                         <tr>
@@ -335,6 +348,11 @@
                     <tbody id="tableSalto"></tbody>
                 </table>
             </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableSaltoExcel" onclick="exportTableToExcel('tableSaltoExcel','tableSalto')" >Descargar excel</button>
+            </div>
+
             <div class="col-12 text-center" id="idSaltoGrafica1">
                 <h4>Gráfica Salto Horizontal</h4>
             </div>
@@ -353,7 +371,7 @@
             </div>
 
             <div class="col-12" id="idBrazo2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableBrazoExcel">
                     <thead>
                        
                         <tr>
@@ -364,6 +382,11 @@
                     <tbody id="tableBrazo"></tbody>
                 </table>
             </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableBrazoExcel" onclick="exportTableToExcel('tableBrazoExcel','tableBrazo')" >Descargar excel</button>
+            </div>
+
             <div class="col-12 text-center" id="idBrazoGrafica1">
                 <h4>Gráfica Flexión Brazos</h4>
             </div>
@@ -382,7 +405,7 @@
             </div>
 
             <div class="col-12" id="idTapping2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableTappingExcel">
                     <thead>
                         <tr>
                             <th>Prueba</th>
@@ -391,6 +414,10 @@
                     </thead>
                     <tbody id="tableTapping"></tbody>
                 </table>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableTappingExcel" onclick="exportTableToExcel('tableTappingExcel','tableTapping')" >Descargar excel</button>
             </div>
             <div class="col-12 text-center" id="idTappingGrafica1">
                 <h4>Gráfica Tapping</h4>
@@ -410,7 +437,7 @@
             </div>
 
             <div class="col-12" id="idAbdominales2">
-                <table class="table table-sm table-bordered text-center">
+                <table class="table table-sm table-bordered text-center" id="tableAbdominalesExcel">
                     <thead>
                         <tr>
                             <th>Prueba</th>
@@ -419,6 +446,10 @@
                     </thead>
                     <tbody id="tableAbdominales"></tbody>
                 </table>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" id="btnTableAbdominalesExcel" onclick="exportTableToExcel('tableAbdominalesExcel','tableAbdominales')" >Descargar excel</button>
             </div>
             <div class="col-12 text-center" id="idAbdominalesGrafica1">
                 <h4>Gráfica Abdominales</h4>
