@@ -942,7 +942,7 @@ function showSpeed() {
     document.getElementById("idSpeed2").style.display = "block";
     document.getElementById("idSpeedGrafica1").style.display = "block";
     document.getElementById("idSpeedGrafica2").style.display = "block";
-    document.getElementById("btnTableSpeedCExcel").style.display = "none";
+    document.getElementById("btnTableSpeedCExcel").style.display = "block";
 
 
     hideNavette()
