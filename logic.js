@@ -724,7 +724,7 @@ function funTableBrazo(info) {
         tableString +=
             '<tr>' +
             '<td>' + element.key + '</td>' +
-            '<td>' + element.finaltime + ' mts'+ '</td>' +
+            '<td>' + element.finaltime + ''+ '</td>' +
             '</tr>';
     });
 
@@ -1139,9 +1139,11 @@ document.getElementById("graficasRow").style.display = 'none';
 var reference = db.ref('Users/');
 reference.on('value', function (datas) {
     var data = datas.val();
+    inHTML('loadTable','');
     $.each(data, function (nodo, value) {
         var sendData = table(nodo, value.Name, value.Lastname, value.Age, value.Gender, value.Height,
             value.Weight, value.Hip, value.Waist, value.ICC, value.IMC);
+        
         printHTML('loadTable', sendData);
     });
 });
